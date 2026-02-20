@@ -87,6 +87,19 @@ body {
   backdrop-filter: blur(10px);
   z-index: 1000;
 }
+.join-btn {
+  padding: 10px 20px;
+  background-color: #3c096c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.join-btn:hover {
+  background-color: #33085d;
+  transform: scale(1.01);
+}
 
 .logo {
   font-weight: bold;
@@ -113,7 +126,8 @@ body {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  color: #3c096c;
+  color: white;
+  font-size: xx-large;
 }
 
 /* SECTIONS */
