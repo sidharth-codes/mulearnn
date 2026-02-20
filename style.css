@@ -6,11 +6,12 @@
 }
 
 body {
+  color: #ffffff;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
-/* BACKGROUND */
+
 
 .container{
   width:100vw;
@@ -126,11 +127,14 @@ body {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  color: white;
-  font-size: xx-large;
+  color: #3c096c;
 }
 
-/* SECTIONS */
+.hero p {
+  font-size: 20px;
+}
+
+
 
 .section {
   padding: 100px 10%;
