@@ -26,7 +26,7 @@ body {
 #up,#down,#left,#right{
   position: absolute;
   border-radius: 50%;
-  animation: gradient 6s ease-in-out infinite;
+  animation: gradient 2s ease-in-out infinite;
 }
 
 @keyframes gradient{
