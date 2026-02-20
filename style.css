@@ -6,7 +6,7 @@
 }
 
 body {
-  color: #1c1c1c;
+  color: #ffffff;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -137,12 +137,13 @@ body {
 
 .hero h1 {
   font-size: 60px;
-  color: #3c096c;
+  color: #ffffff;
 }
 
 .hero p {
   font-size: 20px;
 }
+
 
 /* ================= SECTIONS ================= */
 
