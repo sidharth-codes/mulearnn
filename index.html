@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>µLearn GEC Kozhikode – Official Website</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Year Filter Tab Styling to match your website's purple cyber aesthetic */
+    .year-filter-tabs {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0 35px 0;
+    }
+    .year-tab-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      background: var(--glass);
+      color: var(--text-muted);
+      border: 1px solid var(--border-soft);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    }
+    .year-tab-btn:hover {
+      border-color: var(--purple-light);
+      color: var(--text);
+    }
+    .year-tab-btn.active {
+      background: var(--purple-mid);
+      color: var(--white);
+      border-color: var(--purple-mid);
+      box-shadow: 0 0 15px rgba(123,47,247,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="#home">µLearn <span>GECK</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="https://mulearn.org" target="_blank">Join MuLearn</a>
+  </nav>
+
+  <section id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+    <div class="stars" id="stars"></div>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Official Campus Chapter — GEC Kozhikode</div>
+      <h1 class="hero-title">
+        <span class="block">Where Students</span>
+        <span class="block italic">Learn, Lead &</span>
+        <span class="block">Innovate</span>
+      </h1>
+      <p class="hero-sub">
+        µLearn GEC Kozhikode — empowering the next generation of<br/>
+        engineers, builders, and changemakers.
+      </p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#about">Explore</a>
+        <a class="btn-ghost" href="#contact">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about-layout">
+        <div class="about-text reveal">
+          <div class="section-eyebrow">Who We Are</div>
+          <h2 class="section-heading">Building a culture of <span class="accent">lifelong learning</span></h2>
+          <p>At the GEC Kozhikode chapter of the <strong>Mulearn Foundation</strong>, we empower students and foster a culture of continuous growth. Founded on the belief that education drives transformation, we connect students across disciplines to explore technology, entrepreneurship, and leadership.</p>
+          <p>Our chapter provides <strong>accessible skill development</strong>, innovative workshops, and a vibrant community for future leaders — all under one roof. Join us as we learn, grow, and shape a brighter future together.</p>
+        </div>
+        <div class="about-pillars reveal" style="transition-delay:0.15s">
+          <div class="pillar">
+            <div class="pillar-icon">⚡</div>
+            <div class="pillar-title">Skill Development</div>
+            <div class="pillar-text">Workshops, bootcamps and hands-on sessions to sharpen real-world skills.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-title">Community</div>
+            <div class="pillar-text">A vibrant network of students, mentors and industry leaders driving each other forward.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🚀</div>
+            <div class="pillar-title">Innovation</div>
+            <div class="pillar-text">Hackathons, idea sprints and project showcases to turn bold ideas into reality.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🏆</div>
+            <div class="pillar-title">Recognition</div>
+            <div class="pillar-text">Earn Karma points and get recognized on the µLearn national leaderboard.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events">
+    <div class="wrap">
+      <div class="section-eyebrow reveal">What We Do</div>
+      <h2 class="section-heading reveal">Our <span class="accent">Events</span></h2>
+
+      <div class="year-filter-tabs reveal">
+        <button class="year-tab-btn active" onclick="filterEventsByYear('2026', this)">Campaigns 2026</button>
+        <button class="year-tab-btn" onclick="filterEventsByYear('2025', this)">Archives 2025</button>
+      </div>
+
+      <div class="slideshow-wrap reveal" style="transition-delay:0.1s">
+        <div class="slides-track" id="slidesTrack">
+          <p id="event-loading-msg" style="text-align: center; color: rgba(255,255,255,0.4); padding: 60px; width: 100%; font-family: 'Space Mono', monospace; font-size: 0.9rem;">
+            Synchronizing with µLearn database operations matrix...
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="wrap">
+      <div class="section-eyebrow reveal">Our Impact</div>
+      <h2 class="section-heading reveal">Numbers that <span class="accent">speak</span></h2>
+      <div class="achievements-layout">
+        <div>
+          <div class="stats-grid reveal" style="transition-delay:0.1s">
+            <div class="stat-cell">
+              <div class="stat-number" data-target="6" data-suffix="th">—</div>
+              <div class="stat-label">Position on µLearn<br/>Yearly Leaderboard 2025</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number" data-target="90" data-suffix="k+">—</div>
+              <div class="stat-label">Karma Points<br/>Earned by Members</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number" data-target="200" data-suffix="+">—</div>
+              <div class="stat-label">Active Members<br/>Across Disciplines</div>
+            </div>
+          </div>
+        </div>
+        <div class="highlights-list reveal" style="transition-delay:0.2s">
+          <div class="highlight-item">
+            <div class="highlight-num">01</div>
+            <div class="highlight-text"><strong>🏅 6th place on µLearn Yearly Leaderboard 2025</strong> — ranked among the top campus chapters nationally, reflecting consistent community engagement.</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-num">02</div>
+            <div class="highlight-text"><strong>⚡ 90,000+ Karma Points</strong> — collectively earned by our members, proving their dedication to continuous skill growth.</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-num">03</div>
+            <div class="highlight-text"><strong>🤖 Nourin — AI Interest Group Lead 2025</strong> at µLearn Foundation, representing GECK nationally and driving AI-focused initiatives.</div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-num">04</div>
+            <div class="highlight-text"><strong>🏗️ Nidhi Ashok — Civil IG Lead 2025</strong> at µLearn Foundation, championing civil engineering innovation on a national stage.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <div class="section-eyebrow reveal">The People</div>
+      <h2 class="section-heading reveal">Core <span class="accent">Team 2026</span></h2>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="bindima.jpeg" alt="Dr. Bindima" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👩‍🏫</div>'">
+          </div>
+          <div class="team-info">
+            <div class="team-name">Dr. Bindima</div>
+            <div class="team-role">Campus Advisor</div>
+          </div>
+        </div>
+        <div class="team-card reveal" style="transition-delay:0.1s">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="naem.jpeg" alt="Naeem Ahammed" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👨‍💻</div>'">
+          </div>
+          <div class="team-info">
+            <div class="team-name">Naeem Ahammed</div>
+            <div class="team-role">Alumni Member</div>
+          </div>
+        </div>
+        <div class="team-card reveal" style="transition-delay:0.2s">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="neha.jpeg" alt="Neha T K" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👩‍💻</div>'">
+          </div>
+          <div class="team-info">
+            <div class="team-name">Neha T K</div>
+            <div class="team-role">Mentor</div>
+          </div>
+        </div>
+        <div class="team-card reveal" style="transition-delay:0.3s">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="vimal.jpeg" alt="Vimal John M V" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👨‍🎓</div>'">
+          </div>
+          <div class="team-info">
+            <div class="team-name">Vimal John M V</div>
+            <div class="team-role">Campus Lead</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-eyebrow reveal">Reach Out</div>
+      <h2 class="section-heading reveal">Get in <span class="accent">Touch</span></h2>
+      <div class="contact-layout">
+        <div class="contact-items reveal" style="transition-delay:0.1s">
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value"><a href="mailto:mulearngeck@gmail.com">mulearngeck@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Government Engineering College<br/>Kozhikode, Kerala</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div>
+              <div class="contact-label">Web Administrator</div>
+              <div class="contact-value">Nandana K — <a href="mailto:nandanak@gmail.com">nandanak@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🔗</div>
+            <div>
+              <div class="contact-label">µLearn Platform</div>
+              <div class="contact-value"><a href="https://mulearn.org" target="_blank">mulearn.org</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="join-box reveal" style="transition-delay:0.2s">
+          <h3>Ready to <span>join us?</span></h3>
+          <p>Become part of a thriving community of learners, builders and leaders. Register on the µLearn platform, earn Karma, and grow with us at GEC Kozhikode.</p>
+          <a class="btn-primary" href="https://mulearn.org" target="_blank">Register on MuLearn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">µLearn GEC Kozhikode</div>
+    <div class="footer-copy">
+      © 2026 µLearn GECK — Official Campus Chapter<br/>
+      Web Administrator: Nandana K
+    </div>
+  </footer>
+
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkkzGS8mEcLY0qJiwbIPaNBaRO2hbm0Dz-mVj1d4wJdqrTZWrVLJo9F7xFTNqnbP87Lg/exec';
+    const track = document.getElementById('slidesTrack');
+    
+    // Master data arrays for multi-year scope management
+    let allEventsCached = [];
+    let activeYearFilter = '2026';
+
+    function getDirectDriveImageUrl(url) {
+      if (!url) return '';
+      const trimmed = url.trim();
+      if (!trimmed.includes('drive.google.com')) return trimmed;
+      const match = trimmed.match(/\/file\/d\/([a-zA-Z0-9-_]+)/) || trimmed.match(/id=([a-zA-Z0-9-_]+)/);
+      if (match && match[1]) {
+        return `https://drive.google.com/thumbnail?sz=w1200&id=${match[1]}`;
+      }
+      return trimmed;
+    }
+
+    // Network ingestion pipeline
+    fetch(SCRIPT_URL)
+      .then(res => res.json())
+      .then(data => {
+        allEventsCached = data || [];
+        // Render the default tab (2026) immediately upon successful download
+        renderFilteredCarousel();
+      })
+      .catch(err => {
+        console.error("Fetch failure:", err);
+        track.innerHTML = `<p style="text-align:center; color:#ff5252; width:100%; padding:40px;">Failed to synchronize live event cards.</p>`;
+      });
+
+    // Filtering handler linked directly to sub-tab button elements
+    function filterEventsByYear(year, buttonElement) {
+      activeYearFilter = year;
+      
+      // Update visual active styling across tab buttons
+      document.querySelectorAll('.year-tab-btn').forEach(btn => btn.classList.remove('active'));
+      buttonElement.classList.add('active');
+      
+      renderFilteredCarousel();
+    }
+
+    function renderFilteredCarousel() {
+      // Filter array on the fly based on whether the date string contains '2025' or '2026'
+      const filteredData = allEventsCached.filter(event => {
+        const eventDateStr = String(event.date || '');
+        return eventDateStr.includes(activeYearFilter);
+      });
+
+      if(filteredData.length === 0) {
+        track.innerHTML = `<p style="text-align:center; color:rgba(255,255,255,0.5); width:100%; padding:60px; font-family:'Space Mono', monospace; font-size:0.9rem;">No entries found for the year ${activeYearFilter}.</p>`;
+        return;
+      }
+
+      track.innerHTML = '';
+      const totalSlides = filteredData.length;
+
+      filteredData.forEach((event, index) => {
+        const slideNum = index + 1;
+        const padIndex = String(slideNum).padStart(2, '0');
+        const padTotal = String(totalSlides).padStart(2, '0');
+        
+        const assetImg = getDirectDriveImageUrl(event.imageurl || event.image);
+        const encodedName = encodeURIComponent(event.name);
+        const encodedCat = encodeURIComponent(event.category);
+
+        // Real-time date boundary checking loop logic
+        let isExpired = false;
+        if (event.deadline) {
+          const deadlineDate = new Date(event.deadline);
+          const currentDate = new Date();
+          if (!isNaN(deadlineDate.getTime()) && currentDate > deadlineDate) {
+            isExpired = true;
+          }
+        }
+
+        const actionButtonHTML = isExpired 
+          ? `<button class="register-btn" disabled style="background: rgba(255,255,255,0.05); color: var(--text-muted); border-color: var(--border-soft); cursor: not-allowed; transform: none; box-shadow: none;">Closed</button>`
+          : `<button class="register-btn" onclick="window.location.href='register.html?name=${encodedName}&cat=${encodedCat}'">Register</button>`;
+
+        const slideHTML = `
+          <div class="slide ${index === 0 ? 'active' : ''}" data-slide-idx="${index}">
+            <div class="slide-img-wrap">
+              <img class="slide-img" src="${assetImg}" alt="${event.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="slide-placeholder" style="display:none; width:100%; height:100%; background:var(--bg-3); align-items:center; justify-content:center; font-size:4rem;">🌌</div>
+            </div>
+            <div class="slide-content">
+              <div class="slide-index">${padIndex} / ${padTotal}</div>
+              <div class="slide-cat">${event.category}</div>
+              <div class="slide-name">${event.name}</div>
+              <div class="slide-desc">
+                ${event.description}
+                <br><br>
+                <span style="color: var(--lavender); font-family: 'Space Mono', monospace; font-size: 0.8rem; display: block; margin-bottom: 5px;">
+                  📅 Date: ${event.date} | 🪙 Cost: ${event.price}
+                </span>
+              </div>
+              <div class="slide-controls">
+                <button class="slide-btn global-prev-trigger" id="prevBtn" aria-label="Previous">&#8592;</button>
+                <button class="slide-btn global-next-trigger" id="nextBtn" aria-label="Next">&#8594;</button>
+                <div class="slide-dots"></div>
+                <span class="slide-counter">${slideNum} / ${totalSlides}</span>
+                ${actionButtonHTML}
+              </div>
+            </div>
+          </div>
+        `;
+        track.innerHTML += slideHTML;
+      });
+
+      // Clear existing listeners by initializing a brand new structural instance loop
+      initCarouselEngine(totalSlides);
+    }
+
+    function initCarouselEngine(total) {
+      let currentIdx = 0;
+      
+      function updateSliderDOM(targetIdx) {
+        const slides = document.querySelectorAll('.slide');
+        if(slides.length === 0) return;
+        
+        slides[currentIdx].classList.remove('active');
+        currentIdx = (targetIdx + total) % total;
+        slides[currentIdx].classList.add('active');
+        
+        const dotContainers = document.querySelectorAll('.slide-dots');
+        dotContainers.forEach(container => {
+          container.innerHTML = '';
+          for(let i=0; i<total; i++) {
+            container.innerHTML += `<span class="dot ${i === currentIdx ? 'active' : ''}"></span>`;
+          }
+        });
+
+        document.querySelectorAll('.slide-counter, .s-counter').forEach(el => {
+          el.textContent = `${currentIdx + 1} / ${total}`;
+        });
+      }
+
+      // Safeguard global click pipeline configuration
+      if (!window.carouselListenerConfigured) {
+        document.addEventListener('click', function(e) {
+          const slides = document.querySelectorAll('.slide');
+          const localTotal = slides.length;
+          if(localTotal <= 1) return;
+
+          // Find current active slide index manually
+          let activeIdx = 0;
+          slides.forEach((s, idx) => { if(s.classList.contains('active')) activeIdx = idx; });
+
+          if(e.target.classList.contains('global-next-trigger') || e.target.id === 'nextBtn' || e.target.classList.contains('s-next')) {
+            slides[activeIdx].classList.remove('active');
+            let nextIdx = (activeIdx + 1) % localTotal;
+            slides[nextIdx].classList.add('active');
+            syncCarouselIndicators(nextIdx, localTotal);
+          }
+          if(e.target.classList.contains('global-prev-trigger') || e.target.id === 'prevBtn' || e.target.classList.contains('s-prev')) {
+            slides[activeIdx].classList.remove('active');
+            let prevIdx = (activeIdx - 1 + localTotal) % localTotal;
+            slides[prevIdx].classList.add('active');
+            syncCarouselIndicators(prevIdx, localTotal);
+          }
+        });
+        window.carouselListenerConfigured = true;
+      }
+
+      function syncCarouselIndicators(idx, localTotal) {
+        const dotContainers = document.querySelectorAll('.slide-dots');
+        dotContainers.forEach(container => {
+          container.innerHTML = '';
+          for(let i=0; i<localTotal; i++) {
+            container.innerHTML += `<span class="dot ${i === idx ? 'active' : ''}"></span>`;
+          }
+        });
+        document.querySelectorAll('.slide-counter, .s-counter').forEach(el => {
+          el.textContent = `${idx + 1} / ${localTotal}`;
+        });
+      }
+
+      updateSliderDOM(0);
+    }
+  </script>
+  <script src="scripts.js"></script>
+</body>
+</html>

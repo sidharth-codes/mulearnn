@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REGISTER</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="register-body-wrapper">
+
+  <div class="form-container">
+    <h2 id="form-title">Student Details Form</h2>
+    
+    <form id="studentRegisterForm">
+      <input type="hidden" id="eventName" name="eventName">
+      <input type="hidden" id="eventCategory" name="eventCategory">
+        
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="ENTER YOUR NAME" required>
+      </div>
+
+      <div class="form-group">
+        <label for="muid">MUID</label>
+        <input type="text" id="muid" name="muid" placeholder="ENTER YOUR MUID" required>
+      </div>
+
+      <div class="form-group">
+        <label for="semester">Semester</label>
+        <select id="semester" name="semester" required>
+          <option value="" disabled selected>Select your semester</option>
+          <option value="S1">S1</option>
+          <option value="S2">S2</option>
+          <option value="S3">S3</option>
+          <option value="S4">S4</option>
+          <option value="S5">S5</option>
+          <option value="S6">S6</option>
+          <option value="S7">S7</option>
+          <option value="S8">S8</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department</label>
+        <select id="department" name="department" required>
+          <option value="" disabled selected>Select your department</option>
+          <option value="CSD">CSD</option>
+          <option value="EC">EC</option>
+          <option value="AE">AE</option>
+          <option value="CE">CE</option>
+          <option value="MECH">MECH</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="1234567890" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
+      </div>
+
+      <button type="submit" id="submitBtn">Submit Registration</button>
+    </form>
+    
+    <p id="successToast" style="color: #00e676; text-align: center; margin-top: 15px; display: none; font-weight: 600; font-family: 'Space Mono', monospace; font-size: 0.85rem;">
+      Registration saved to database matrix!
+    </p>
+  </div>
+  
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventName = urlParams.get('name') || "Event";
+    const eventCategory = urlParams.get('cat') || "Tech";
+
+    document.getElementById('form-title').innerText = `Register for ${eventName}`;
+    document.getElementById('eventName').value = eventName;
+    document.getElementById('eventCategory').value = eventCategory;
+
+    // FIXED: Pointing to the active operational script ID matching index.html
+    const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxkkzGS8mEcLY0qJiwbIPaNBaRO2hbm0Dz-mVj1d4wJdqrTZWrVLJo9F7xFTNqnbP87Lg/exec'; 
+    
+    const form = document.getElementById('studentRegisterForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const toast = document.getElementById('successToast');
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Processing submission...";
+
+      const encodedPayload = new URLSearchParams(new FormData(form));
+
+      fetch(BACKEND_URL, { 
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodedPayload 
+      })
+      .then(res => {
+        submitBtn.innerText = "Submitted Successfully!";
+        toast.style.display = "block";
+        form.reset();
+        
+        document.getElementById('eventName').value = eventName;
+        document.getElementById('eventCategory').value = eventCategory;
+      })
+      .catch(err => {
+        console.error("Error logging submission:", err.message);
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Retry Submission";
+      });
+    });
+  </script>
+<!-- Sidharth P. Signature Widget - Interactive Circle Capsule -->
+<div class="sidharth-signature-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999; display: flex; align-items: center; flex-direction: row-reverse; gap: 0px; cursor: pointer;" onmouseenter="this.querySelector('.sig-text-slide').style.width='180px'; this.querySelector('.sig-text-slide').style.padding='0 15px 0 20px'; this.querySelector('.sig-text-slide').style.opacity='1'; this.querySelector('.sig-text-slide').style.marginRight='-15px'; this.querySelector('.sig-icon-ring').style.transform='rotate(360deg)'; this.querySelector('.sig-icon-ring').style.borderColor='#b06bff';" onmouseleave="this.querySelector('.sig-text-slide').style.width='0px'; this.querySelector('.sig-text-slide').style.padding='0'; this.querySelector('.sig-text-slide').style.opacity='0'; this.querySelector('.sig-text-slide').style.marginRight='0px'; this.querySelector('.sig-icon-ring').style.transform='rotate(0deg)'; this.querySelector('.sig-icon-ring').style.borderColor='rgba(176,107,255,0.3)';">
+  
+  <!-- The Master Font Circle Ring -->
+  <div class="sig-icon-ring" style="width: 42px; height: 42px; background: #130020; border: 2px solid rgba(176,107,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(0,0,0,0.6); position: relative; z-index: 2; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.4s ease;">
+    <span style="font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.4rem; color: #d4b0ff; line-height: 1; text-shadow: 0 0 10px rgba(176,107,255,0.5); transform: translateY(-1px);">S</span>
+  </div>
+
+  <!-- Sliding Interactive Text Capsule -->
+  <div class="sig-text-slide" style="width: 0px; height: 34px; background: rgba(26,0,48,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(176,107,255,0.2); border-radius: 20px 0 0 20px; display: flex; align-items: center; justify-content: center; white-space: nowrap; opacity: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); z-index: 1;">
+    <span style="font-family: 'Space Mono', monospace; font-size: 0.68rem; color: #ede0ff; letter-spacing: 0.08em; text-transform: uppercase;">Crafted by <strong style="color: #fff; font-family: 'Outfit', sans-serif; font-weight: 600;">Sidharth</strong></span>
+  </div>
+</div>
+</div>
+</body>
+</html>
